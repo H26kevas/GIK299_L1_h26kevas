@@ -22,12 +22,19 @@ class Program
 
                     Console.Write("Ange temperaturen i Celsius: ");
                     string temperaturInput = Console.ReadLine();
-                    double temperatur = double.Parse(temperaturInput);
-
+                    if (!double.TryParse(temperaturInput, out double temperatur))
+                    {
+                        Console.WriteLine("Ogiltig temperatur. Försök igen.");
+                        break;
+                    }
                     Console.Write("Ange vindhastigheten: ");
                     string vindinput = Console.ReadLine();
 
-                    double vind = double.Parse(vindinput);
+                    if (!double.TryParse(vindinput, out double vind))
+                    {
+                        Console.WriteLine("Ogiltig vindhastighet. Försök igen.");
+                        break;
+                    }
                     Console.Write("Ange vindhastighetens enhet (km/h eller m/s: ");
                     string enhetInput = Console.ReadLine();
                     if (enhetInput == "m/s")
