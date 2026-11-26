@@ -8,6 +8,7 @@ class Program
 
     static void Main(string[] args)
     {
+        // Styr om programmet ska fortsätta visa menyn
         bool fortsätt = true;
         while (fortsätt)
         {
@@ -35,10 +36,11 @@ class Program
                         Console.WriteLine("Ogiltig vindhastighet. Försök igen.");
                         break;
                     }
-                    Console.Write("Ange vindhastighetens enhet (km/h eller m/s: ");
+                    Console.Write("Ange vindhastighetens enhet (km/h eller m/s): ");
                     string enhetInput = Console.ReadLine();
                     if (enhetInput == "m/s")
                     {
+                        // Omvandlar vindhastigheten från m/s till km/h
                         vind = vind * 3.6;
                     }
                     else if (enhetInput == "km/h")
@@ -48,13 +50,13 @@ class Program
                     else
                     {
                         Console.WriteLine("Felaktig enhet");
-                        return;
-                    }
-
+                        break;
+                    } 
+                    // Beräknar Wind Chill Temperature (WCT)
                     double vindavkylning = 13.12 + 0.6215 * temperatur
                                            - 11.37 * Math.Pow(vind, 0.16)
                                            + 0.3965 * temperatur * Math.Pow(vind, 0.16);
-                    Console.WriteLine("Det känns som: " + vindavkylning.ToString("F1") + " °C");
+                    Console.WriteLine("Det känns som: " + vindavkylning.ToString("F1") + " grader.");
                     if (vindavkylning > -25)
                     {
                         Console.WriteLine("Kallt");
